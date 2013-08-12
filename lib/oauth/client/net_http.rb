@@ -26,7 +26,6 @@ class Net::HTTPGenericRequest
     helper_options = oauth_helper_options(http, consumer, token, options)
     @oauth_helper = OAuth::Client::Helper.new(self, helper_options)
     @oauth_helper.amend_user_agent_header(self)
-    @oauth_helper.hash_body if oauth_body_hash_required?
     self.send("set_oauth_#{helper_options[:scheme]}")
   end
 
@@ -47,7 +46,6 @@ class Net::HTTPGenericRequest
   def signature_base_string(http, consumer = nil, token = nil, options = {})
     helper_options = oauth_helper_options(http, consumer, token, options)
     oauth_helper = OAuth::Client::Helper.new(self, helper_options)
-    oauth_helper.hash_body if oauth_body_hash_required?
     oauth_helper.signature_base_string
   end
 
