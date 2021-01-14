@@ -1,3 +1,5 @@
+= Deprecated: This fork was originally created to support an old version of doorkeeper that we no longer run. Don't use this fork.
+
 = Ruby OAuth
 
 == What
